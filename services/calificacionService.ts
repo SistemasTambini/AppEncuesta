@@ -6,7 +6,7 @@ import { Personal } from '../models/Personal';
 // Obtener todas las áreas
 export const getAreasCalificacion = async (): Promise<Area[]> => {
     try {
-        const response = await api.get<Area[]>('/calificacion/areas');
+        const response = await api.get<Area[]>('/encuestas/areas');
         return response.data;
     } catch (error) {
         console.error('Error al obtener áreas:', error);
@@ -17,7 +17,7 @@ export const getAreasCalificacion = async (): Promise<Area[]> => {
 // Obtener el personal según el área seleccionada
 export const getPersonalByArea = async (id: number): Promise<Personal[]> => {
     try {
-        const response = await api.get(`/calificacion/${id}`);
+        const response = await api.get(`/encuestas/${id}`);
         return response.data.map((p: any) => ({
             id: p.id,
             nombre: p.nombre,
@@ -31,7 +31,7 @@ export const getPersonalByArea = async (id: number): Promise<Personal[]> => {
 
 export const sendSurvey = async (data: SurveyData): Promise<void> => {
     try {
-        await api.post('/calificacion', data);
+        await api.post('/encuestas', data);
     } catch (error) {
         console.error('Error al enviar la encuesta:', error);
         throw error;

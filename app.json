@@ -16,7 +16,21 @@
         "foregroundImage": "./assets/images/icon_1024.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.alexcapo2020.AppEncuesta"
+      "package": "com.alexcapo2020.AppEncuesta",
+      "permissions": ["INTERNET"],
+      "usesCleartextTraffic": true,  
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "https",
+              "host": "myapp.com"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -45,7 +59,8 @@
       },
       "eas": {
         "projectId": "47d51ac7-4493-49fb-97b0-c8508302b52e"
-      }
+      },
+      "API_URL": "https://api-encuesta-7920396be181.herokuapp.com/api"
     }
   }
 }

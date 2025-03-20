@@ -9,4 +9,5 @@ interface SurveyData {
     pregunta5: number;
     pregunta6: number;
     pregunta7: number;
+    pregunta8: number;
 }

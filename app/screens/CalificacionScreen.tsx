@@ -8,6 +8,7 @@ import { Alert } from 'react-native'; // 🔹 Importa Alert
 import { Area } from '@/models/Area';
 import { Personal } from '@/models/Personal';
 import { getAreasCalificacion, getPersonalByArea, sendSurvey } from '@/services/calificacionService';
+import axios from 'axios';
 //import {Toast} from 'react-native-toast-message';
 
 type QuestionKey = 'clarity' | 'responseTime' | 'professionalism' | 'time' | 'recommendation' | 'atu1' | 'atu2' | 'general';
@@ -108,6 +109,7 @@ export default function CalificacionScreen() {
             pregunta5: responses.recommendation ?? 0,
             pregunta6: responses.atu1 ?? 0,
             pregunta7: responses.atu2 ?? 0,
+            pregunta8: responses.general ?? 0,
         };
     
         console.log('🚀 Enviando datos:', JSON.stringify(surveyData, null, 2));
@@ -164,6 +166,11 @@ export default function CalificacionScreen() {
             ? label.replace(/\babogado\b/gi, 'asesor(a)') // 🔹 Asegura que solo cambia la palabra exacta "abogado"
             : label;
     };
+
+    const [pokemonName, setPokemonName] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
+    
+    
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -342,4 +349,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
         marginBottom: 20,
     },
+    
 });
